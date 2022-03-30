@@ -145,15 +145,13 @@ define([
             if (!metadataMgr) { return; }
             var data = metadataMgr.getPrivateData().settings;
             data = data.codemirror || {};
-
             var maxWidth = data['hardWrapMaxWidth'];
-
             maxWidth = typeof (maxWidth) === 'number' ? maxWidth : 60;
             editor.setOption('maxWidth', maxWidth);
         };
         metadataMgr.onChangeLazy(updateMaxWidthSettings);
         updateMaxWidthSettings();
-    }
+    };
 
     module.mkIndentSettings = function (editor, metadataMgr) {
         var setIndentation = function (units, useTabs, fontSize, spellcheck, brackets) {
@@ -521,7 +519,7 @@ define([
 
         exp.mkMaxWidthSettings = function (metadataMgr) {
             module.mkMaxWidthSettings(editor, metadataMgr);
-        }
+        };
 
         exp.getCursor = function () {
             var doc = canonicalize(editor.getValue());

@@ -93,12 +93,15 @@ define([
         framework._.toolbar.$bottomL.append($theme);
     };
 
-    var wait, options = { column: 60 }, changing = false;
     var wrapParagraph = function (editor, CodeMirror, framework) {
+        var wait, options = { column: 60 }, changing = false;
         var privateData = framework._.cpNfInner.metadataMgr;
         console.log(privateData);
         console.log(privateData.getPrivateData());
         console.log(privateData.getPrivateData().settings.codemirror);
+
+        var column = privateData.getPrivateData().settings.codemirror.hardWrapMaxWidth
+        options.column = typeof(column) === 'number' && !isNaN(column)? column: 60;
 
         editor.on('change', (cm, change) => {
             if (changing) { return; }
@@ -436,6 +439,7 @@ define([
         evModeChange.reg(markdownTb.modeChange);
 
         CodeMirror.mkIndentSettings(framework._.cpNfInner.metadataMgr);
+        CodeMirror.mkMaxWidthSettings(framework._.cpNfInner.metadataMgr);
         CodeMirror.init(framework.localChange, framework._.title, framework._.toolbar);
         mkFilePicker(framework, editor, evModeChange);
 

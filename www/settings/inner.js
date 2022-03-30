@@ -95,6 +95,7 @@ define([
             'cp-settings-code-brackets',
             'cp-settings-code-font-size',
             'cp-settings-code-spellcheck',
+            'cp-settings-code-max-width',
         ],
         'kanban': [ // Msg.settings_cat_kanban
             'cp-settings-kanban-tags',
